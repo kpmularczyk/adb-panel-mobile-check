@@ -114,8 +114,9 @@ def get_problem_devices():
 
 problem_devices = get_problem_devices()
 
+message = ""
 if not problem_devices:
-    print("All devices are OK!")
+    message = "All devices are OK!"
 else:
     message = f"{len(problem_devices)} devices with problems:\n"
     for device in problem_devices.values():
@@ -127,10 +128,10 @@ else:
             else "Tel.: none"
         )
 
-        import notification
-        notification.schedule(
-            message=message,
-            delay=1,
-            title="ADB panel check",
-            sound_name="default"
-         )
+import notification
+notification.schedule(
+    message=message,
+    delay=1,
+    title="ADB panel check",
+    sound_name="default"
+    )
